@@ -1,5 +1,6 @@
 
 <img align="center" src="https://github.com/JohnPhilosopher/MetaEdix/blob/master/logo.png?raw=true"/>
+
 # MetaEdix
 MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. The philosophy employed by the hex editor is all grids. All bytes are on a grid-like structure and are edited as such.
 

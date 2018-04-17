@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="33mm"
+   height="38mm"
+   viewBox="0 0 33 38"
+   version="1.1"
+   id="svg8511"
+   style="shape-rendering:crispEdges"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="close.svg">
+  <defs
+     id="defs8505" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#43525c"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="189.31598"
+     inkscape:cy="-76.390009"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-grids="true"
+     inkscape:window-width="1241"
+     inkscape:window-height="687"
+     inkscape:window-x="1282"
+     inkscape:window-y="272"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid12992" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata8508">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-259)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25.43742752px;line-height:125%;font-family:Billabong;-inkscape-font-specification:Billabong;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26497319px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="8.1148033"
+       y="288.53305"
+       id="text12990"
+       transform="scale(0.99852864,1.0014735)"><tspan
+         sodipodi:role="line"
+         id="tspan12988"
+         x="8.1148033"
+         y="288.53305"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'FFF Forward';-inkscape-font-specification:'FFF Forward';fill:#ffffff;stroke-width:0.26497319px">x</tspan></text>
+  </g>
+</svg>
