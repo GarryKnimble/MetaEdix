@@ -6,6 +6,8 @@ var byte_data = [];
 var bytes = [];
 var focusByte;
 var altSelect = 0;
+var currentFile = "";
+openFile();
 window.onkeydown = function(e){
 	if(e.keyCode == 16){
 		altSelect = 1;
@@ -33,25 +35,42 @@ function deselectMBox(){
 	$(".wrapper").attr('disabled', 'disabled');
 	$(".messagebox").removeClass('hidden');
 }
-dialog.showOpenDialog({properties: ['openFile']}, 
-function(filename){
-	fs.readFile(filename[0], 'ascii', function (err, data){
-		if(err) return console.log(err);
-		content = data;
-		for(var i = 0; i < data.length; i++){
-			var hex = content.charCodeAt(i).toString(16);
-			if(hex.length < 2){
-				hex = "0" + hex;
+function openFile(){
+	dialog.showOpenDialog({properties: ['openFile']}, 
+	function(filename){
+		currentFile = filename[0];
+		fs.readFile(filename[0], 'ascii', function (err, data){
+			if(err) return console.log(err);
+			content = data;
+			for(var i = 0; i < data.length; i++){
+				var hex = content.charCodeAt(i).toString(16);
+				if(hex.length < 2){
+					hex = "0" + hex;
+				}
+				bytes.push(hex.toUpperCase());
+				byte_data.push(content.charCodeAt(i));
 			}
-			bytes.push(hex.toUpperCase());
-			byte_data.push(content.charCodeAt(i));
-		}
-		var container = document.getElementsByClassName("content")[0];
-		for(var i = 0; i < bytes.length; i++){
-			container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this)' data-index='" + i + "'>" + bytes[i] + "</div>";
-		}
+			var container = document.getElementsByClassName("content")[0];
+			for(var i = 0; i < bytes.length; i++){
+				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this)' data-index='" + i + "'>" + bytes[i] + "</div>";
+			}
+			saveFile();
+		});
 	});
-});
+}
+
+function saveFile(){
+	dialog.showSaveDialog({properties: ['saveFile']}, 
+	function(filename){
+		var content = "";
+		for(var i = 0; i < byte_data.length; i++){
+			content += String.fromCharCode(byte_data[i]);
+		}
+		fs.writeFile(filename, content, 'ascii', function(err){
+			if(err) return console.log(err);
+		});
+	});
+}
 
 function byteEvent(item){
 	var index = item.getAttribute("data-index");
