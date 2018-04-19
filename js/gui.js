@@ -35,11 +35,6 @@ window.onkeyup = function(e){
 		altSelect = 0;
 	}
 }
-function deselectMBox(){
-	$(".wrapper").animate({'opacity': 0.6}, 300);
-	$(".wrapper").attr('disabled', 'disabled');
-	$(".messagebox").removeClass('hidden');
-}
 function openFile(){
 	dialog.showOpenDialog({properties: ['openFile']}, 
 	function(filename){
@@ -94,7 +89,18 @@ function byteEvent(item){
 	var byteBlocks = document.getElementsByClassName('byteBlock');
 	if(altSelect == 0){
 		if($(".active").length > 1){
-			deselectMBox();
+			$(".wrapper").animate({'opacity': 0.4}, 300);
+			var dialogBox = new DialogBox("Warning", "There are bytes currently selected. Deselect them?", function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				for(var i = 0; i < byteBlocks.length; i++){
+					byteBlocks[i].classList.remove("active");
+				}
+			}, function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+			});
+			dialogBox.show();
 		}
 		else{
 			for(var i = 0; i < byteBlocks.length; i++){
