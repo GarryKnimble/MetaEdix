@@ -7,7 +7,6 @@ var bytes = [];
 var focusByte;
 var altSelect = 0;
 var currentFile = "";
-openFile();
 document.onclick = function(e){
 	if(!contains(e.target.classList, "menuItem")){
 		closeAllMenus();
@@ -54,7 +53,6 @@ function openFile(){
 			for(var i = 0; i < bytes.length; i++){
 				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this)' data-index='" + i + "'>" + bytes[i] + "</div>";
 			}
-			saveFile();
 		});
 	});
 }
