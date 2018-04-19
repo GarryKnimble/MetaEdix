@@ -168,9 +168,6 @@ body{
 	width: 400px;
 	z-index: 1;
 }
-.hidden {
-	display: none;
-}
 .message-title{
 	font-family: Calibri;
 	font-weight: lighter;
@@ -195,6 +192,7 @@ body{
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	border-top: solid 1px #586A75;
+	text-align: center;
 }
 .btn-default{
 	padding: 5px;
