@@ -46,6 +46,9 @@ body{
 .menu li:hover{
 	background-color: #5E6F7A;
 }
+.selected{
+	background-color: #5E6F7A;
+}
 .controls {
 	-webkit-app-region: no-drag;
 	float:right;
@@ -104,6 +107,32 @@ body{
 	float:left;
 	cursor: pointer;
 	transition: background-color 100ms;
+}
+.dropdown{
+	min-width: 100px;
+	padding: 5px; 
+	background-color: #5E6F7A;
+	position: absolute;
+	z-index: 5;
+	margin-left: -10px;
+	display: none;
+	border-bottom: solid 1px #445561;
+	border-right: solid 1px #445561;
+}
+.dropdown li{
+	background-color: #5E6F7A;
+}
+.dropdown li:hover{
+	background-color: #6D7E8A;
+}
+.divide{
+	border-bottom: solid 1px #445561;
+}
+.open {
+	display: initial;
+}
+.dropdown li{
+	float: initial;
 }
 .byteBlock:hover{
 	background-color: #4B5D69;

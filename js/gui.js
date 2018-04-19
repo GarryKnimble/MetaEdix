@@ -8,6 +8,11 @@ var focusByte;
 var altSelect = 0;
 var currentFile = "";
 openFile();
+document.onclick = function(e){
+	if(!contains(e.target.classList, "menuItem")){
+		closeAllMenus();
+	}
+}
 window.onkeydown = function(e){
 	if(e.keyCode == 16){
 		altSelect = 1;
@@ -120,6 +125,32 @@ function updateLine(item){
 	document.getElementById("coords").innerText = rowStr.toUpperCase() + ":" + colStr.toUpperCase();
 }
 
+function menuItemClick(item){
+	var menuItems = document.getElementById("menuBar").getElementsByClassName("menuItem");
+	var reset = false;
+	if(contains(item.classList, "selected")){
+		item.classList.remove("selected");
+		item.getElementsByClassName("dropdown")[0].classList.remove("open");
+		reset = true;
+	}
+	for(var i = 0; i < menuItems.length; i++){
+		menuItems[i].classList.remove("selected");
+		menuItems[i].getElementsByClassName("dropdown")[0].classList.remove("open");
+	}
+	if(!reset){
+		item.classList.add("selected");
+		item.getElementsByClassName("dropdown")[0].classList.add("open");
+	}
+}
+
+function closeAllMenus(){
+	var menuItems = document.getElementById("menuBar").getElementsByClassName("menuItem");
+	for(var i = 0; i < menuItems.length; i++){
+		menuItems[i].classList.remove("selected");
+		menuItems[i].getElementsByClassName("dropdown")[0].classList.remove("open");
+	}
+}
+
 function minimizeApp(){
 	remote.getCurrentWindow().minimize();
 }
@@ -130,4 +161,13 @@ function maximizeApp(){
 
 function exitApp(){
 	remote.getCurrentWindow().close();
+}
+
+function contains(arr, item){
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] == item){
+			return true;
+		}
+	}
+	return false;
 }

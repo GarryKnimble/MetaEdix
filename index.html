@@ -33,24 +33,67 @@
 </div>
 <div class="wrapper">
 <div class="menu unselectable">
-	<ul>
-		<li>
+	<ul id="menuBar">
+		<li class="menuItem" onclick="menuItemClick(this)">
 			File
+			<div class="dropdown">
+				<ul>
+					<li class="item divide">New Project</li>
+					<li class="item">Open File</li>
+					<li class="item">Open Project</li>
+					<li class="item">Save Project</li>
+					<li class="item divide">Save Project As...</li>
+					<li class="item">Export File</li>
+					<li class="item divide">Settings</li>
+					<li class="item">Exit</li>
+				</ul>
+			</div>
 		</li>
-		<li>
+		<li class="menuItem" onclick="menuItemClick(this)">
 			Edit
+			<div class="dropdown">
+				<ul>
+					<li class="item">Undo</li>
+					<li class="item divide">Redo</li>
+					<li class="item">Cut</li>
+					<li class="item">Copy</li>
+					<li class="item">Paste</li>
+				</ul>
+			</div>
 		</li>
-		<li>
+		<li class="menuItem" onclick="menuItemClick(this)">
 			Search
+			<div class="dropdown">
+				<ul>
+					<li class="item">Prefab</li>
+					<li class="item">Byte</li>
+					<li class="item">Word</li>
+				</ul>
+			</div>
 		</li>
-		<li>
+		<li class="menuItem" onclick="menuItemClick(this)">
 			Tools
+			<div class="dropdown">
+				<ul>
+					<li class="item">None</li>
+				</ul>
+			</div>
 		</li>
-		<li>
+		<li class="menuItem" onclick="menuItemClick(this)">
 			Window
+			<div class="dropdown">
+				<ul>
+					<li class="item">None</li>
+				</ul>
+			</div>
 		</li>
-		<li>
+		<li class="menuItem" onclick="menuItemClick(this)">
 			Help
+			<div class="dropdown">
+				<ul>
+					<li class="item">About</li>
+				</ul>
+			</div>
 		</li>
 	</ul>
 </div>
