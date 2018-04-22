@@ -24,7 +24,7 @@
 <div class="wrapper">
 <div class="menu unselectable">
 	<ul id="menuBar">
-		<li class="menuItem" onclick="menuItemClick(this)">
+		<li class="menuItem" onclick="menuItemClick(this)" onhover="">
 			File
 			<div class="dropdown">
 				<ul>
@@ -35,7 +35,7 @@
 					<li class="item divide">Save Project As...</li>
 					<li class="item" onclick="saveFile()">Export File</li>
 					<li class="item divide">Settings</li>
-					<li class="item">Exit</li>
+					<li class="item" onclick="exitApp()">Exit</li>
 				</ul>
 			</div>
 		</li>
@@ -88,14 +88,14 @@
 	</ul>
 </div>
 <div class="toolbar unselectable">
-	<label id="row-col">Offset: ######## - ## </label> <input id="editText" type="text"/>
+	<label id="row-col">Offset: ######## - ## </label> <input id="editText" type="text" disabled/>
 </div>
 <div class="container unselectable">
 <div class="content">
 </div>
 </div>
 <footer>
-<span>Ready</span>
+<span id="status">Ready</span>
 <span id="coords">00000000:00</span>
 </footer>
 </div>

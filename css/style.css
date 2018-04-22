@@ -89,6 +89,7 @@ body{
 }
 .container::-webkit-scrollbar{
 	width: 10px;
+	height: 10px;
 }
 .container::-webkit-scrollbar-track{
 	background-color: #222D33;
@@ -96,6 +97,9 @@ body{
 .container::-webkit-scrollbar-thumb{
 	background-color: #697982;
 	border-radius: 15px;
+}
+.container::-webkit-scrollbar-corner{
+	background-color: #424D54;
 }
 .byteBlock{
 	margin: 2px;
@@ -109,7 +113,7 @@ body{
 	transition: background-color 100ms;
 }
 .dropdown{
-	min-width: 100px;
+	min-width: 150px;
 	padding: 5px; 
 	background-color: #5E6F7A;
 	position: absolute;
