@@ -50,6 +50,8 @@ function openFile(){
 		currentFile = filename[0];
 		fs.readFile(filename[0], 'utf8', 'rb', function (err, data){
 			if(err) return console.log(err);
+			document.getElementById("win-title").innerText = "MetaEdix - " + filename[0];
+			document.title = "MetaEdix - " + filename[0];
 			var container = document.getElementsByClassName("content")[0];
 			container.innerHTML = "";
 			bytes = [];

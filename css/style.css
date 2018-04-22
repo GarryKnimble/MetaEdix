@@ -5,6 +5,11 @@ html, body{
 	font-size: 9pt;
 	overflow-y: auto;
 }
+#win-title{
+	height: 20px; 
+	vertical-align: middle;
+	padding-left: 5px;
+}
 body{
 	background-color: #2b353b;
 	color: #FFF;
