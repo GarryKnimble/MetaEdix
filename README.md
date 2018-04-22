@@ -24,4 +24,5 @@ MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. T
  - Storing objects of byte block compositions for various features, such as searching and modification
  - Other ideas that might come about
 ## License
-MetaEdix is licensed under the [GNU General Public License v3.0](https://github.com/JohnPhilosopher/MetaEdix/blob/master/LICENSE) Other libraries used in MetaEdix have their own respective licenses and fall under those licenses.
+MetaEdix is licensed under the [GNU General Public License v3.0](https://github.com/JohnPhilosopher/MetaEdix/blob/master/LICENSE). 
+Other libraries used in MetaEdix have their own respective licenses and fall under those licenses.
