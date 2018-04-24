@@ -12,5 +12,6 @@
 		</prefab>
 	</prefabs>
 	<script src="./main.py"></script>
+	<script src="./background.py" background></script>
 	<stream id="stream1"></stream>
 </project>
