@@ -12,5 +12,5 @@
 		</prefab>
 	</prefabs>
 	<script src="./main.py"></script>
-	<stream src="stdin"></stream>
+	<stream id="stream1"></stream>
 </project>
