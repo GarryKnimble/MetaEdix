@@ -1,0 +1,16 @@
+<project file="Canvas.java">
+	<name>Workshop1</name>
+	<version>1.0.0</version>
+	<prefabs>
+		<prefab id="prefab1">
+			<byte r="0" c="0">FF</byte>
+			<byte r="1" c="1">FF</byte>
+			<byte r="2" c="2">FF</byte>
+			<byte r="3" c="3">FF</byte>
+			<byte r="4" c="4">FF</byte>
+			<byte r="5" c="5">FF</byte>
+		</prefab>
+	</prefabs>
+	<script src="./main.py"></script>
+	<stream src="stdin"></stream>
+</project>

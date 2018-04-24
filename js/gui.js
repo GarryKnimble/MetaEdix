@@ -1,7 +1,7 @@
 const remote = require('electron').remote
 const dialog = remote.dialog;
 var content;
-var byte_data = new Uint8Array;
+var byte_data = [];
 var fs = require('fs');
 var bytes = [];
 var focusByte;
