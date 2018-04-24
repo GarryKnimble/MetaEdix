@@ -5,6 +5,7 @@ var byte_data = new Uint8Array;
 var fs = require('fs');
 var bytes = [];
 var focusByte;
+var menuSelect = 0;
 var altSelect = 0;
 var currentFile = "";
 var MAX_BYTE_SIZE = 256;
@@ -156,6 +157,10 @@ function menuItemClick(item){
 		item.classList.remove("selected");
 		item.getElementsByClassName("dropdown")[0].classList.remove("open");
 		reset = true;
+		menuSelect = 0;
+	}
+	else{
+		menuSelect = 1;
 	}
 	for(var i = 0; i < menuItems.length; i++){
 		menuItems[i].classList.remove("selected");
@@ -167,12 +172,35 @@ function menuItemClick(item){
 	}
 }
 
+function menuItemHover(item){
+	if(menuSelect == 1){
+		if(contains(item.classList, "selected") == false){
+			var menuItems = document.getElementById("menuBar").getElementsByClassName("menuItem");
+			var reset = false;
+			if(contains(item.classList, "selected")){
+				item.classList.remove("selected");
+				item.getElementsByClassName("dropdown")[0].classList.remove("open");
+				reset = true;
+			}
+			for(var i = 0; i < menuItems.length; i++){
+				menuItems[i].classList.remove("selected");
+				menuItems[i].getElementsByClassName("dropdown")[0].classList.remove("open");
+			}
+			if(!reset){
+				item.classList.add("selected");
+				item.getElementsByClassName("dropdown")[0].classList.add("open");
+			}
+		}
+	}
+}
+
 function closeAllMenus(){
 	var menuItems = document.getElementById("menuBar").getElementsByClassName("menuItem");
 	for(var i = 0; i < menuItems.length; i++){
 		menuItems[i].classList.remove("selected");
 		menuItems[i].getElementsByClassName("dropdown")[0].classList.remove("open");
 	}
+	menuSelect = 0;
 }
 
 function minimizeApp(){
