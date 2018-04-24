@@ -12,16 +12,17 @@ MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. T
  - Bringing back focus on selected byte via F key
  - Grid-editor environment
  - Edited byte blocks revealed
-### Upcoming Features
- - If selected multiple byte blocks and user selects without SHIFT key, asks whether to deselect other byte blocks or not.
  - Saving file after editing
- - Editing byte blocks via decimal, binary, or hexadecimal values
  - Grid-editor environment
+ - Editing byte blocks via decimal, binary, or hexadecimal values
+ - If selected multiple byte blocks and user selects without SHIFT key, asks whether to deselect other byte blocks or not.
+### Upcoming Features
  - Saving projects for file editing
  - Loading byte blocks when scrolling rather than at once
 ### Ideas
  - State machine implementation for file editing
  - Storing objects of byte block compositions for various features, such as searching and modification
  - Other ideas that might come about
+ - Plugins made in Python 3
 ## License
 MetaEdix is licensed under the [GNU General Public License v3.0](https://github.com/JohnPhilosopher/MetaEdix/blob/master/LICENSE)
