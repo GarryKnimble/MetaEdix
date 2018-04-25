@@ -21,6 +21,8 @@ MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. T
 ### Upcoming Features
  - Saving projects for file editing
  - Loading byte blocks when scrolling rather than at once
+ - Select bytes with SHIFT key without having to click constantly
+ - Select bytes linearly like a regular text editor
 ### Ideas
  - State machine implementation for file editing
  - Storing objects of byte block compositions for various features, such as searching and modification
