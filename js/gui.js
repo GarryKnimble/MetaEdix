@@ -4,6 +4,7 @@ var content;
 var byte_data = [];
 var fs = require('fs');
 var bytes = [];
+var selectedBytes = [];
 var focusByte;
 var menuSelect = 0;
 var altSelect = 0;
@@ -15,36 +16,86 @@ document.onclick = function(e){
 	}
 }
 window.onkeydown = function(e){
-	if(e.keyCode == 16){
+	setKeyValsDown(e);
+	if(key_strokes["SHIFT"] == 1){
 		altSelect = 1;
 	}
-	if(e.keyCode == 13){
+	if(key_strokes["ENTER"] == 1 && key_strokes["SHIFT"] == 1){
+		if(document.getElementById("editText") === document.activeElement){
+			if(!contains(selectedBytes, focusByte)){
+				selectedBytes.push(focusByte);
+			}
+			for(var i = 0; i < selectedBytes.length; i++){
+				if(selectedBytes[i].innerText != document.getElementById("editText").value.toUpperCase()){
+					var val = getDecimalFromParse(document.getElementById("editText").value);
+					if(val < MAX_BYTE_SIZE){
+						selectedBytes[i].innerText = formatHex(val.toString(16).toUpperCase());
+						byte_data[selectedBytes[i].getAttribute("data-index")] = val;
+						selectedBytes[i].classList.add("modified");
+						status("Ready");
+					}
+					else{
+						error("Input value for byte larger than MAX BYTE SIZE(255)");
+					}
+				}
+			}
+		}
+	}
+	else if(key_strokes["ENTER"] == 1 && key_strokes["CTRL"] == 1){
+		altSelect = 1;
 		if(document.getElementById("editText") === document.activeElement){
 			if(focusByte.innerText != document.getElementById("editText").value.toUpperCase()){
 				var val = getDecimalFromParse(document.getElementById("editText").value);
-				console.log(val);
 				if(val < MAX_BYTE_SIZE){
 					focusByte.innerText = formatHex(val.toString(16).toUpperCase());
 					byte_data[focusByte.getAttribute("data-index")] = val;
 					focusByte.classList.add("modified");
 					status("Ready");
+					for(var i = 0; i < selectedBytes.length; i++){
+						if(selectedBytes[i] == focusByte){
+							byteEvent(selectedBytes[(i+1)%selectedBytes.length]);
+							break;
+						}						
+					}
 				}
 				else{
 					error("Input value for byte larger than MAX BYTE SIZE(255)");
 				}
 			}
 		}
+		altSelect = 0;
 	}
-	if(e.keyCode == 70){
+	else{
+		if(key_strokes["ENTER"] == 1){
+			if(document.getElementById("editText") === document.activeElement){
+				if(focusByte.innerText != document.getElementById("editText").value.toUpperCase()){
+					var val = getDecimalFromParse(document.getElementById("editText").value);
+					if(val < MAX_BYTE_SIZE){
+						focusByte.innerText = formatHex(val.toString(16).toUpperCase());
+						byte_data[focusByte.getAttribute("data-index")] = val;
+						focusByte.classList.add("modified");
+						status("Ready");
+					}
+					else{
+						error("Input value for byte larger than MAX BYTE SIZE(255)");
+					}
+				}
+			}
+		}
+	}
+	if(key_strokes["KEY_F"] == 1){
 		$('.container').animate({
 			scrollTop: focusByte.offsetTop-350}, 800);
 	}
 }
+
 window.onkeyup = function(e){
+	setKeyValsUp(e);
 	if(e.keyCode == 16){
 		altSelect = 0;
 	}
 }
+
 function openFile(){
 	dialog.showOpenDialog({properties: ['openFile']}, 
 	function(filename){
@@ -114,6 +165,7 @@ function byteEvent(item){
 				for(var i = 0; i < byteBlocks.length; i++){
 					byteBlocks[i].classList.remove("active");
 				}
+				selectedBytes = [];
 			}, function(){
 				dialogBox.close();
 				$(".wrapper").animate({'opacity': 1}, 300);
@@ -125,6 +177,9 @@ function byteEvent(item){
 				byteBlocks[i].classList.remove("active");
 			}
 		}
+	}
+	else{
+		selectedBytes.push(item);
 	}
 	for(var i = 0; i < byteBlocks.length; i++){
 		byteBlocks[i].classList.remove("focused");
