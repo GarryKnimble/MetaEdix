@@ -39,7 +39,7 @@ body{
 .menu ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 1;
 }
 .menu li {
 	float: left;
@@ -53,6 +53,7 @@ body{
 }
 .selected{
 	background-color: #5E6F7A;
+	outline: solid 1px #2D3C47;
 }
 .controls {
 	-webkit-app-region: no-drag;
@@ -125,10 +126,10 @@ body{
 	background-color: #5E6F7A;
 	position: absolute;
 	z-index: 5;
-	margin-left: -10px;
+	margin-left: -11px;
 	display: none;
-	border-bottom: solid 1px #445561;
-	border-right: solid 1px #445561;
+	border: solid 1px #2D3C47;
+	margin-top: 5px;
 }
 .dropdown li{
 	background-color: #5E6F7A;
@@ -137,7 +138,7 @@ body{
 	background-color: #6D7E8A;
 }
 .divide{
-	border-bottom: solid 1px #445561;
+	border-bottom: solid 1px #2D3C47;
 }
 .open {
 	display: initial;
