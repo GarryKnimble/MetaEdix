@@ -7,8 +7,8 @@ MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. T
 
 ![enter image description here](https://raw.githubusercontent.com/JohnPhilosopher/MetaEdix/master/MetaEdix.png)
 ## Getting Started
-To run MetaEdix, npm must be installed. [Here](https://www.npmjs.com/get-npm) is a link to installation guide for npm.
-Next, install Electron. [This](https://electronjs.org/docs/tutorial/installation) guide can show the ways to install Electron. It is preferred that Electron is installed globally for the rest of the instructions.
+To run MetaEdix, npm must be installed. <a href="https://www.npmjs.com/get-npm" target="_blank">Here</a> is a link to installation guide for npm.
+Next, install Electron. <a href="https://electronjs.org/docs/tutorial/installation" target="_blank">This</a> guide can show the ways to install Electron. It is preferred that Electron is installed globally for the rest of the instructions.
 After installing Electron, clone the MetaEdix repository into any folder. After doing so, go into the MetaEdix repository folder and do the following command:
 ```
 npm start
