@@ -5,7 +5,7 @@
 # MetaEdix
 MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. The philosophy employed by the hex editor is all grids. All bytes are on a grid-like structure and are edited as such. This application intends to provide ways to edit bytes in files with efficiency in mind.
 
-![enter image description here](https://raw.githubusercontent.com/JohnPhilosopher/MetaEdix/master/MetaEdix.png)
+![enter image description here](https://raw.githubusercontent.com/JohnPhilosopher/MetaEdix/develop/MetaEdix.png)
 ## Getting Started
 To run MetaEdix, npm must be installed. <a href="https://www.npmjs.com/get-npm" target="_blank">Here</a> is a link to installation guide for npm.
 Next, install Electron. <a href="https://electronjs.org/docs/tutorial/installation" target="_blank">This</a> guide can show the ways to install Electron. It is preferred that Electron is installed globally for the rest of the instructions.
