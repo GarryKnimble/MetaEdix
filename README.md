@@ -34,6 +34,7 @@ And there you go! Start testing with MetaEdix and see what you can do.
  - Multiple windows for different stuff
  - Tools
  - Different byte column size editing
+ - Select bytes linearly like a regular text editor
 
 ### Ideas
  - State machine implementation for file editing
