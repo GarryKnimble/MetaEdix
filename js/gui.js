@@ -125,7 +125,6 @@ function openFile(){
 				bytes.push(hex.toUpperCase());
 				byte_data.push(content.charCodeAt(i));
 			}
-			console.log(byte_data);
 			for(var i = 0; i < bytes.length; i++){
 				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this);if(key_strokes[\"SHIFT\"] == 1 && key_strokes[\"LMB\"] == 1){ byteEvent(this); }' data-index='" + i + "'>" + bytes[i] + "</div>";
 			}
@@ -173,10 +172,13 @@ function byteEvent(item){
 					byteBlocks[i].classList.remove("active");
 				}
 				selectedBytes = [];
+				$(".wrapper").css("pointer-events", "initial");
 			}, function(){
 				dialogBox.close();
 				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
 			});
+			$(".wrapper").css("pointer-events", "none");
 			dialogBox.show();
 		}
 		else{
@@ -187,6 +189,10 @@ function byteEvent(item){
 	}
 	else{
 		selectedBytes.push(item);
+		selectedBytes.sort(function(a, b){
+			return a.getAttribute("data-index") - b.getAttribute("data-index");
+		});
+		console.log(selectedBytes);
 	}
 	for(var i = 0; i < byteBlocks.length; i++){
 		byteBlocks[i].classList.remove("focused");
