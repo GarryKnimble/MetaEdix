@@ -96,6 +96,14 @@ window.onkeyup = function(e){
 	}
 }
 
+window.onmousedown = function(){
+	setLMBValsDown();
+}
+
+window.onmouseup = function(){
+	setLMBValsUp();
+}
+
 function openFile(){
 	dialog.showOpenDialog({properties: ['openFile']}, 
 	function(filename){
@@ -119,7 +127,7 @@ function openFile(){
 			}
 			console.log(byte_data);
 			for(var i = 0; i < bytes.length; i++){
-				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this)' data-index='" + i + "'>" + bytes[i] + "</div>";
+				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this);if(key_strokes[\"SHIFT\"] == 1 && key_strokes[\"LMB\"] == 1){ byteEvent(this); }' data-index='" + i + "'>" + bytes[i] + "</div>";
 			}
 		});
 	});
@@ -132,7 +140,6 @@ function saveFile(){
 		const byte_array = new Uint8Array(byte_data.length);
 		byte_array.set(byte_data);
 		byte_array.forEach(function(element, index, array){
-			console.log(element);
 			content += String.fromCharCode(element);
 		});
 		fs.writeFile(filename, content, 'utf8', '0o666', 'wb', function(err){
