@@ -7,7 +7,7 @@ MetaEdix is a Hex editor with the intent of making file-byte editing a breeze. T
 
 ![enter image description here](https://github.com/JohnPhilosopher/MetaEdix/blob/develop/MetaEdix.png?raw=true)
 ### Features
- - Selecting multiple bytes via holding SHIFT key and clicking
+ - Selecting multiple bytes via holding SHIFT key and hovering over bytes (Needs work)
  - Editing individual bytes
  - Bringing back focus on selected byte via F key
  - Grid-editor environment
