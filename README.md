@@ -25,6 +25,7 @@ And there you go! Start testing with MetaEdix and see what you can do.
  - Grid-editor environment
  - Editing byte blocks via decimal, binary, or hexadecimal values
  - If selected multiple byte blocks and user selects without SHIFT key, asks whether to deselect other byte blocks or not.
+ - Pressing R on the focused byte block reveals the character of the byte value. If it isn't within the range of characters 32-126 of the ASCII table, then it doesn't show the character
 ### Upcoming Features
  - Saving projects for file editing
  - Loading byte blocks when scrolling rather than at once

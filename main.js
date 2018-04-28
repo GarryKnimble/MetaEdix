@@ -6,7 +6,7 @@ const url = require('url');
 function createWindow(){
 	win = new BrowserWindow({width: 1000, height: 786, frame: false});
 	win.setMenu(null);
-	//win.webContents.openDevTools();
+	win.webContents.openDevTools();
 	win.loadURL(url.format({
 		pathname: path.join(__dirname, 'index.html'),
 		protocol: 'file:',

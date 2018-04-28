@@ -20,6 +20,32 @@ window.onkeydown = function(e){
 	if(key_strokes["SHIFT"] == 1){
 		altSelect = 1;
 	}
+	if(key_strokes["KEY_R"] == 1){
+		var byt = parseInt(bytes[focusByte.getAttribute("data-index")], 16);
+		// If revealed
+		if(!contains(focusByte.classList, "revealed")){
+			console.log(byt);
+			if(byt > 31 && byt < 127){
+				if(byt > 32){
+					focusByte.innerText = String.fromCharCode(parseInt(focusByte.innerText, 16));
+				}
+				else{
+					focusByte.innerText = "\\s"
+				}
+				focusByte.classList.add("revealed");
+				status("Ready");
+			}
+			else{
+				error("Character not viewable");
+			}
+		}
+		// Otherwise
+		else{
+			focusByte.innerText = formatHex(byt.toString(16));
+			focusByte.classList.remove("revealed");
+			status("Ready");
+		}
+	}
 	if(key_strokes["ENTER"] == 1 && key_strokes["SHIFT"] == 1){
 		if(document.getElementById("editText") === document.activeElement){
 			if(!contains(selectedBytes, focusByte)){
