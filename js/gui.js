@@ -322,7 +322,12 @@ function minimizeApp(){
 }
 
 function maximizeApp(){
-	remote.getCurrentWindow().maximize();
+	if(remote.getCurrentWindow().isMaximized()){
+		remote.getCurrentWindow().unmaximize();
+	}	
+	else{
+		remote.getCurrentWindow().maximize();
+	}
 }
 
 function exitApp(){
