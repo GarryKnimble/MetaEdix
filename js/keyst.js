@@ -12,6 +12,12 @@ function setKeyValsDown(e){
 	if(e.keyCode == 82){
 		key_strokes["KEY_R"] = 1;
 	}
+	if(e.keyCode == 67){
+		key_strokes["KEY_C"] = 1;
+	}
+	if(e.keyCode == 86){
+		key_strokes["KEY_V"] = 1;
+	}
 	if(e.keyCode == 17){
 		key_strokes["CTRL"] = 1;
 	}
@@ -28,6 +34,12 @@ function setKeyValsUp(e){
 	}
 	if(e.keyCode == 82){
 		key_strokes["KEY_R"] = 0;
+	}
+	if(e.keyCode == 67){
+		key_strokes["KEY_C"] = 0;
+	}
+	if(e.keyCode == 86){
+		key_strokes["KEY_V"] = 0;
 	}
 	if(e.keyCode == 17){
 		key_strokes["CTRL"] = 0;

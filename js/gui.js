@@ -5,6 +5,7 @@ var byte_data = [];
 var fs = require('fs');
 var bytes = [];
 var selectedBytes = [];
+var copyBytes = [];
 var focusByte;
 var menuSelect = 0;
 var altSelect = 0;
@@ -19,6 +20,25 @@ window.onkeydown = function(e){
 	setKeyValsDown(e);
 	if(key_strokes["SHIFT"] == 1){
 		altSelect = 1;
+	}
+	if(key_strokes["CTRL"] == 1){
+		if(key_strokes["KEY_C"] == 1){
+			copyBytes = selectedBytes;
+		}
+		else if(key_strokes["KEY_V"] == 1){
+			if(copyBytes.length == selectedBytes.length){
+				for(var i = 0; i < copyBytes.length; i++){
+					var val = getDecimalFromParse(copyBytes[i].innerText);
+					selectedBytes[i].innerText = copyBytes[i].innerText;
+					byte_data[copyBytes[i].getAttribute("data-index")] = val;
+					selectedBytes[i].classList.add("modified");
+					status("Ready");
+				}
+			}
+			else{
+				error("There are " + copyBytes.length + " in the copy data. You have " + selectedBytes.length + " bytes selected.");
+			}
+		}
 	}
 	if(key_strokes["KEY_R"] == 1){
 		var byt = parseInt(bytes[focusByte.getAttribute("data-index")], 16);

@@ -1,8 +1,8 @@
 html, body{
 	border: none;
 	margin: 0;
-	font-family: Arial;
-	font-size: 9pt;
+	font-family: Segoe UI;
+	font-size: 8pt;
 	overflow-y: auto;
 }
 #win-title{
@@ -39,11 +39,11 @@ body{
 .menu ul {
 	list-style-type: none;
 	margin: 0;
-	padding: 1;
+	padding: 0;
 }
 .menu li {
 	float: left;
-	padding: 5px;
+	padding: 4px;
 	padding-left: 10px; 
 	padding-right: 10px;
 	cursor: pointer;
@@ -81,7 +81,8 @@ body{
 	padding: 2px;
 	padding-left: 8px;
 	font-size: 8pt;
-	font-family: Tahoma;
+	font-family: Segoe UI;
+	font-weight: 600;
 	-webkit-app-region: drag;
 }
 .container{
@@ -130,7 +131,7 @@ body{
 	margin-left: -11px;
 	display: none;
 	border: solid 1px #2D3C47;
-	margin-top: 5px;
+	margin-top: 4px;
 }
 .dropdown li{
 	background-color: #5E6F7A;
