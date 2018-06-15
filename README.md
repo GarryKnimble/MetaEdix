@@ -22,7 +22,7 @@ And there you go! Start testing with MetaEdix and see what you can do.
  - Grid-editor environment
  - Edited byte blocks revealed
  - Saving file after editing
- - Grid-editor environment
+ - Copying and pasting blocks of bytes
  - Editing byte blocks via decimal, binary, or hexadecimal values
  - If selected multiple byte blocks and user selects without SHIFT key, asks whether to deselect other byte blocks or not.
 ### Upcoming Features
