@@ -23,7 +23,12 @@ window.onkeydown = function(e){
 	}
 	if(key_strokes["CTRL"] == 1){
 		if(key_strokes["KEY_C"] == 1){
-			copyBytes = selectedBytes;
+			if(selectedBytes.length > 0){
+				copyBytes = selectedBytes;
+			}
+			else{
+				copyBytes = [focusByte];
+			}
 		}
 		else if(key_strokes["KEY_V"] == 1){
 			if(copyBytes.length == selectedBytes.length){
@@ -35,8 +40,18 @@ window.onkeydown = function(e){
 					status("Ready");
 				}
 			}
+			else if(selectedBytes.length == 0 && copyBytes.length == 1){
+				var val = getDecimalFromParse(copyBytes[0].innerText);
+				focusByte.innerText = copyBytes[0].innerText;
+				byte_data[copyBytes[0].getAttribute("data-index")] = val;
+				focusByte.classList.add("modified");
+				status("Ready");
+			}
+			else if (copyBytes.length == 0){
+				error("Nothing has been copied.");
+			}
 			else{
-				error("There are " + copyBytes.length + " in the copy data. You have " + selectedBytes.length + " bytes selected.");
+				error("There are " + copyBytes.length + " bytes in the copy data. You have " + (selectedBytes.length + 1) + " bytes selected.");
 			}
 		}
 	}
@@ -380,4 +395,42 @@ function error(val){
 	var statusLabel = document.getElementById("status");
 	statusLabel.style.color = "#FF2A2A";
 	statusLabel.innerText = val;
+}
+
+function about(){
+	$(".wrapper").animate({'opacity': 0.4}, 300);
+	var dialogBox = new DialogBox("About", "MetaEdix is grid-based hex editor.", function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+			}, function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+			});
+			$(".wrapper").css("pointer-events", "none");
+	dialogBox.show();
+}
+
+function search(){
+	$(".wrapper").animate({'opacity': 0.4}, 300);
+	var dialogBox = new TextDialogBox("Search for Byte", "Enter the byte to search for", function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+				var byteBlock = document.getElementsByClassName("byteBlock");
+				for(var i = 0; i < byte_data.length; i++){
+					if(byte_data[i] == getDecimalFromParse(dialogBox.textBox.value)){
+						var foundbyte = byteBlock[i];
+						selectedBytes.push(foundbyte);
+						foundbyte.classList.add("active");
+					}
+				}
+			}, function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+			});
+			$(".wrapper").css("pointer-events", "none");
+	dialogBox.show();
 }
