@@ -28,6 +28,7 @@ And there you go! Start testing with MetaEdix and see what you can do.
 ### Upcoming Features
  - Saving projects for file editing
  - Loading byte blocks when scrolling rather than at once
+ - Searching prefab byte blocks
 ### Ideas
  - State machine implementation for file editing
  - Storing objects of byte block compositions for various features, such as searching and modification
