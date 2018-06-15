@@ -6,7 +6,7 @@ var fs = require('fs');
 var bytes = [];
 var selectedBytes = [];
 var copyBytes = [];
-var prefabs = {};
+var prefabs = new Map();
 var focusByte;
 var menuSelect = 0;
 var altSelect = 0;
@@ -456,7 +456,7 @@ function addPrefab(){
 						dialogBox.close();
 						$(".wrapper").animate({'opacity': 1}, 300);
 						$(".wrapper").css("pointer-events", "initial");
-						prefabs[dialogBox.textBox.value] = Array.from(selectedBytes);
+						prefabs.set(dialogBox.textBox.value, Array.from(selectedBytes));
 						for(var i = 0; i < selectedBytes.length; i++){
 							selectedBytes[i].classList.add("prefab");
 							selectedBytes[i].setAttribute("data-prefab", dialogBox.textBox.value);
@@ -476,6 +476,22 @@ function addPrefab(){
 	else{
 		error("Need to select bytes to create a prefab.");
 	}
+}
+
+function searchPrefab(){
+	$(".wrapper").animate({'opacity': 0.4}, 300);
+	var dialogBox = new ComboDialogBox("Search for Prefab", "Select a prefab structure to search for", Array.from(prefabs.keys()), function(){
+		dialogBox.close();
+		$(".wrapper").animate({'opacity': 1}, 300);
+		$(".wrapper").css("pointer-events", "initial");
+		// TODO
+	}, function(){
+		dialogBox.close();
+		$(".wrapper").animate({'opacity': 1}, 300);
+		$(".wrapper").css("pointer-events", "initial");
+	});
+	$(".wrapper").css("pointer-events", "none");
+	dialogBox.show();
 }
 
 function showprefab(block){

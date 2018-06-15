@@ -48,6 +48,15 @@ body{
 	width: 100%;
 	text-align: center;
 }
+select{
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    background-color: #222D33;
+	border: solid 1px #34424A;
+	padding: 2px;
+	color: #FFF;
+}
 .menu ul {
 	list-style-type: none;
 	margin: 0;
