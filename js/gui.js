@@ -6,6 +6,7 @@ var fs = require('fs');
 var bytes = [];
 var selectedBytes = [];
 var copyBytes = [];
+var prefabs = {};
 var focusByte;
 var menuSelect = 0;
 var altSelect = 0;
@@ -23,36 +24,13 @@ window.onkeydown = function(e){
 	}
 	if(key_strokes["CTRL"] == 1){
 		if(key_strokes["KEY_C"] == 1){
-			if(selectedBytes.length > 0){
-				copyBytes = selectedBytes;
-			}
-			else{
-				copyBytes = [focusByte];
-			}
+			copyByteBlocks();
 		}
 		else if(key_strokes["KEY_V"] == 1){
-			if(copyBytes.length == selectedBytes.length){
-				for(var i = 0; i < copyBytes.length; i++){
-					var val = getDecimalFromParse(copyBytes[i].innerText);
-					selectedBytes[i].innerText = copyBytes[i].innerText;
-					byte_data[copyBytes[i].getAttribute("data-index")] = val;
-					selectedBytes[i].classList.add("modified");
-					status("Ready");
-				}
-			}
-			else if(selectedBytes.length == 0 && copyBytes.length == 1){
-				var val = getDecimalFromParse(copyBytes[0].innerText);
-				focusByte.innerText = copyBytes[0].innerText;
-				byte_data[copyBytes[0].getAttribute("data-index")] = val;
-				focusByte.classList.add("modified");
-				status("Ready");
-			}
-			else if (copyBytes.length == 0){
-				error("Nothing has been copied.");
-			}
-			else{
-				error("There are " + copyBytes.length + " bytes in the copy data. You have " + (selectedBytes.length + 1) + " bytes selected.");
-			}
+			pasteByteBlocks();
+		}
+		else if(key_strokes["KEY_P"] == 1){
+			addPrefab();
 		}
 	}
 	if(key_strokes["KEY_R"] == 1){
@@ -187,7 +165,7 @@ function openFile(){
 				byte_data.push(content.charCodeAt(i));
 			}
 			for(var i = 0; i < bytes.length; i++){
-				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this);if(key_strokes[\"SHIFT\"] == 1 && key_strokes[\"LMB\"] == 1){ byteEvent(this); }' data-index='" + i + "'>" + bytes[i] + "</div>";
+				container.innerHTML += "<div class='byteBlock' onclick='byteEvent(this)' onmouseover='updateLine(this);showprefab(this);if(key_strokes[\"SHIFT\"] == 1 && key_strokes[\"LMB\"] == 1){ byteEvent(this); }' data-index='" + i + "'>" + bytes[i] + "</div>";
 			}
 		});
 	});
@@ -362,8 +340,8 @@ function getDecimalFromParse(input){
 	if(input.split(" ").length > 1){
 		return convertBinToDec(input.split(" ")[0] + input.split(" ")[1]);
 	}
-	else if(input.match(/[0-9]+D/) != null){
-		return parseInt(input.split("D")[0]);
+	else if(input.match(/[0-9]+Dec/) != null){
+		return parseInt(input.split("Dec")[0]);
 	}
 	else{
 		return parseInt(input, 16);
@@ -433,4 +411,122 @@ function search(){
 			});
 			$(".wrapper").css("pointer-events", "none");
 	dialogBox.show();
+}
+
+function searchWord(){
+	$(".wrapper").animate({'opacity': 0.4}, 300);
+	var dialogBox = new TextDialogBox("Search for Word", "Enter the word to search for(separate by ',')", function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+				var byteBlock = document.getElementsByClassName("byteBlock");
+				var byteList = dialogBox.textBox.value.split(",");
+				for(var i = 0; i < byte_data.length; i++){
+					if((byteList.length + i) > (byteBlock.length - 1)) break;
+					var wordSelect = [];
+					for(var k = 0; k < byteList.length; k++){
+						if(byte_data[i + k] == getDecimalFromParse(byteList[k])){
+							wordSelect.push(i+k);
+						}
+						else{
+							wordSelect = [];
+							break;
+						}
+					}
+					for(var j = 0; j < wordSelect.length; j++){
+						var foundbyte = byteBlock[wordSelect[j]];
+						selectedBytes.push(foundbyte);
+						foundbyte.classList.add("active");
+					}
+				}
+			}, function(){
+				dialogBox.close();
+				$(".wrapper").animate({'opacity': 1}, 300);
+				$(".wrapper").css("pointer-events", "initial");
+			});
+			$(".wrapper").css("pointer-events", "none");
+	dialogBox.show();
+}
+
+function addPrefab(){
+	if(selectedBytes.length > 0){
+		if(checkValidSelection()){
+			$(".wrapper").animate({'opacity': 0.4}, 300);
+			var dialogBox = new TextDialogBox("Add Prefab", "Enter the name of the prefab", function(){
+						dialogBox.close();
+						$(".wrapper").animate({'opacity': 1}, 300);
+						$(".wrapper").css("pointer-events", "initial");
+						prefabs[dialogBox.textBox.value] = Array.from(selectedBytes);
+						for(var i = 0; i < selectedBytes.length; i++){
+							selectedBytes[i].classList.add("prefab");
+							selectedBytes[i].setAttribute("data-prefab", dialogBox.textBox.value);
+						}
+					}, function(){
+						dialogBox.close();
+						$(".wrapper").animate({'opacity': 1}, 300);
+						$(".wrapper").css("pointer-events", "initial");
+					});
+					$(".wrapper").css("pointer-events", "none");
+			dialogBox.show();
+		}
+		else{
+			error("Selected bytes contain bytes already part of a prefab.");
+		}
+	}
+	else{
+		error("Need to select bytes to create a prefab.");
+	}
+}
+
+function showprefab(block){
+	var prefabName = block.getAttribute("data-prefab");
+	if(prefabName != null){
+		status("<prefab: " + prefabName + ">");
+	}
+	else{
+		status("Ready");
+	}
+}
+
+function checkValidSelection(){
+	for(var i = 0; i < selectedBytes.length; i++){
+		if(selectedBytes[i].getAttribute("data-prefab") != null){
+			return false;
+		}
+	}
+	return true;
+}
+
+function copyByteBlocks(){
+	if(selectedBytes.length > 0){
+		copyBytes = selectedBytes;
+	}
+	else{
+		copyBytes = [focusByte];
+	}
+}
+
+function pasteByteBlocks(){
+	if(copyBytes.length == selectedBytes.length){
+		for(var i = 0; i < copyBytes.length; i++){
+			var val = getDecimalFromParse(copyBytes[i].innerText);
+			selectedBytes[i].innerText = copyBytes[i].innerText;
+			byte_data[copyBytes[i].getAttribute("data-index")] = val;
+			selectedBytes[i].classList.add("modified");
+			status("Ready");
+		}
+	}
+	else if(selectedBytes.length == 0 && copyBytes.length == 1){
+		var val = getDecimalFromParse(copyBytes[0].innerText);
+		focusByte.innerText = copyBytes[0].innerText;
+		byte_data[copyBytes[0].getAttribute("data-index")] = val;
+		focusByte.classList.add("modified");
+		status("Ready");
+	}
+	else if (copyBytes.length == 0){
+		error("Nothing has been copied.");
+	}
+	else{
+		error("There are " + copyBytes.length + " bytes in the copy data. You have " + (selectedBytes.length + 1) + " bytes selected.");
+	}
 }

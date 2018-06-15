@@ -5,6 +5,9 @@ html, body{
 	font-size: 8pt;
 	overflow-y: auto;
 }
+#prefab{
+	margin: 0 auto;
+}
 #win-title{
 	height: 20px; 
 	vertical-align: middle;
@@ -167,6 +170,12 @@ body{
 }
 .revealed{
 	background-color: #c5a58f;
+}
+.prefab{
+	background-color: #a057ff;
+}
+.prefab:hover{
+	background-color: #c294ff;
 }
 .active {
 	background-color: #ff9955;

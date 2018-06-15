@@ -18,6 +18,9 @@ function setKeyValsDown(e){
 	if(e.keyCode == 86){
 		key_strokes["KEY_V"] = 1;
 	}
+	if(e.keyCode == 80){
+		key_strokes["KEY_P"] = 1;
+	}
 	if(e.keyCode == 17){
 		key_strokes["CTRL"] = 1;
 	}
@@ -40,6 +43,9 @@ function setKeyValsUp(e){
 	}
 	if(e.keyCode == 86){
 		key_strokes["KEY_V"] = 0;
+	}
+	if(e.keyCode == 80){
+		key_strokes["KEY_P"] = 0;
 	}
 	if(e.keyCode == 17){
 		key_strokes["CTRL"] = 0;
