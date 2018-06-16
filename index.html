@@ -12,15 +12,15 @@
 </head>
 <body>
 <div class="title unselectable">
-	<img src="./img/logo.svg" width="20px" height="20px" style="vertical-align: middle;"/> <span id="win-title">MetaEdix</span>
+	<img src="./img/logo.svg" width="20px" height="20px" style="vertical-align: middle; padding: 2px;"/> <span id="win-title">MetaEdix</span>
 		<ul class="controls">
 		<li onclick="minimizeApp()">
-			_
+			<img src="./img/mscreen.png"/>
 		</li>
 		<li onclick="maximizeApp()">
-			□
+			<img src="./img/fscreen.png"/>
 		</li>
-		<li onclick="exitApp()">
+		<li onclick="exitApp()" class="exit">
 			X
 		</li>
 	</ul>
@@ -62,7 +62,7 @@
 			<div class="dropdown">
 				<ul>
 					<li class="item" onclick="addPrefab()">Add Prefab</li>
-					<li class="item">Remove Prefab</li>
+					<li class="item" onclick="removePrefabClick()">Remove Prefab</li>
 				</ul>
 			</div>
 		</li>
@@ -70,7 +70,7 @@
 			Tools
 			<div class="dropdown">
 				<ul>
-					<li class="item">Not implemented</li>
+					<li class="item">Change bytes per row</li>
 				</ul>
 			</div>
 		</li>

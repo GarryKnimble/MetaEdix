@@ -478,6 +478,31 @@ function addPrefab(){
 	}
 }
 
+function removePrefab(name){
+	var prefab = prefabs.get(name);
+	for(var i = 0; i < prefab.length; i++){
+		prefab[i].classList.remove("prefab");
+		prefab[i].setAttribute("data-prefab", null);
+		prefabs.delete(name);
+	}
+}
+
+function removePrefabClick(){
+	$(".wrapper").animate({'opacity': 0.4}, 300);
+	var dialogBox = new ComboDialogBox("Remove Prefab", "Select a prefab structure to remove", Array.from(prefabs.keys()), function(){
+		dialogBox.close();
+		$(".wrapper").animate({'opacity': 1}, 300);
+		$(".wrapper").css("pointer-events", "initial");
+		removePrefab(dialogBox.comboBox.value);
+	}, function(){
+		dialogBox.close();
+		$(".wrapper").animate({'opacity': 1}, 300);
+		$(".wrapper").css("pointer-events", "initial");
+	});
+	$(".wrapper").css("pointer-events", "none");
+	dialogBox.show();
+}
+
 function searchPrefab(){
 	$(".wrapper").animate({'opacity': 0.4}, 300);
 	var dialogBox = new ComboDialogBox("Search for Prefab", "Select a prefab structure to search for", Array.from(prefabs.keys()), function(){

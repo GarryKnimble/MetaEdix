@@ -88,19 +88,22 @@ select{
 .controls li {
 	float: left;
 	padding: 5px;
-	padding-left: 10px; 
-	padding-right: 10px;
+	padding-left: 16px; 
+	padding-right: 16px;
 	cursor: pointer;
 }
 .controls li:hover{
 	background-color: #5E6F7A;
+}
+.controls>.exit:hover{
+	background-color: #c76666;
 }
 .title{
 	font-smooth: never;
 	-webkit-font-smoothing: none;
 	overflow-y: auto;
 	background-color: #43525c;
-	padding: 2px;
+	padding: 0px;
 	padding-left: 8px;
 	font-size: 8pt;
 	font-family: Segoe UI;
@@ -108,7 +111,7 @@ select{
 	-webkit-app-region: drag;
 }
 .container{
-	height: calc(100% - 78px);
+	height: calc(100% - 76px);
 	font-family: Consolas;
 	overflow-y: scroll;
 	opacity: 0.8;
